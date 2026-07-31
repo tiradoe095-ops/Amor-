@@ -4,196 +4,303 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
+
     min-height:100vh;
-    overflow:hidden;
-    font-family:'Poppins',sans-serif;
-    color:white;
+    overflow-x:hidden;
+    overflow-y:auto;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(
+
+    padding:20px;
+
+    font-family:'Poppins',sans-serif;
+
+    color:white;
+
+    background:
+    linear-gradient(
         180deg,
         #020617,
         #1e1b4b,
-        #4c1d95
+        #701a75
     );
+
 }
 
 
-/* CIELO */
+/* =====================
+   FONDO ANIMADO
+===================== */
+
 
 .cielo{
+
     position:fixed;
     inset:0;
+
     overflow:hidden;
+
     z-index:0;
+
 }
 
 
-/* LUNA */
+/* Luna */
 
 .luna{
+
     position:absolute;
-    width:130px;
-    height:130px;
-    background:#fff7d6;
-    border-radius:50%;
+
+    width:140px;
+    height:140px;
+
     top:70px;
     right:120px;
+
+    background:#fff7d6;
+
+    border-radius:50%;
+
     box-shadow:
     0 0 30px #fff7d6,
     0 0 80px #fde68a;
-    animation:brillarLuna 4s infinite alternate;
+
+    animation:lunaBrillo 4s infinite alternate;
+
 }
 
 
-@keyframes brillarLuna{
+@keyframes lunaBrillo{
 
     from{
+
         transform:scale(1);
+
     }
 
     to{
+
         transform:scale(1.08);
+
     }
 
 }
 
 
-/* ESTRELLAS */
+
+/* Estrellas */
 
 .estrella{
+
     position:absolute;
+
     width:3px;
     height:3px;
+
     background:white;
+
     border-radius:50%;
-    box-shadow:0 0 15px white;
-    animation:parpadear 2s infinite;
+
+    box-shadow:
+    0 0 15px white;
+
+    animation:
+    parpadeo 2s infinite;
+
 }
 
 
-@keyframes parpadear{
+@keyframes parpadeo{
 
     50%{
-        opacity:.3;
+
+        opacity:.2;
+
         transform:scale(2);
+
     }
 
 }
 
 
 
-/* CONTENEDOR */
+/* =====================
+   CONTENIDO
+===================== */
+
 
 .contenedor{
 
     position:relative;
+
     z-index:2;
-    width:90%;
+
+    width:100%;
     max-width:850px;
+
     text-align:center;
+
+    padding:30px 15px;
 
 }
 
 
-/* TITULO */
 
 .subtitulo{
 
-    letter-spacing:3px;
-    font-size:14px;
     color:#fbcfe8;
+
+    font-size:15px;
+
+    letter-spacing:3px;
+
     animation:entrada 2s;
 
 }
 
 
+
 h1{
 
+    margin:25px 0;
+
     font-family:'Great Vibes',cursive;
-    font-size:80px;
-    margin:20px 0;
+
+    font-size:clamp(50px,8vw,85px);
+
+    line-height:1.2;
 
     text-shadow:
-    0 0 15px #f472b6,
-    0 0 40px #ec4899;
 
-    animation:latido 3s infinite;
+    0 0 20px #ec4899,
+    0 0 50px #f472b6;
+
+
+    animation:
+    latido 3s infinite;
 
 }
 
 
+
 .texto{
 
+    max-width:650px;
+
+    margin:auto;
+
     font-size:20px;
+
     line-height:1.8;
+
     animation:entrada 3s;
 
 }
 
 
 
-/* BOTON */
+/* =====================
+   BOTON
+===================== */
+
 
 button{
 
     margin-top:35px;
+
     padding:16px 40px;
 
     border:none;
+
     border-radius:50px;
-
-    background:
-    linear-gradient(
-        45deg,
-        #ec4899,
-        #f43f5e
-    );
-
-    color:white;
-    font-size:18px;
 
     cursor:pointer;
 
+    color:white;
+
+    font-size:18px;
+
+    background:
+
+    linear-gradient(
+        45deg,
+        #ec4899,
+        #ef4444
+    );
+
+
     box-shadow:
+
     0 0 25px #ec4899;
+
 
     transition:.4s;
 
 }
 
 
+
 button:hover{
 
     transform:scale(1.1);
+
+    box-shadow:
+
+    0 0 50px #f472b6;
 
 }
 
 
 
-/* CARTA */
+/* =====================
+   CARTA
+===================== */
+
 
 .carta{
 
     display:none;
 
-    margin-top:30px;
+    width:100%;
 
-    padding:40px;
+    max-width:700px;
 
-    border-radius:30px;
+    margin:35px auto 0;
+
+    padding:40px 35px;
+
 
     background:
+
     rgba(255,255,255,.12);
+
 
     backdrop-filter:blur(15px);
 
-    box-shadow:
-    0 0 40px rgba(255,255,255,.2);
 
-    animation:aparecerCarta 1.5s;
+    border:
+
+    1px solid rgba(255,255,255,.2);
+
+
+    border-radius:30px;
+
+
+    box-shadow:
+
+    0 0 40px rgba(255,255,255,.15);
+
+
+    animation:
+
+    aparecerCarta 1.5s;
 
 }
 
@@ -203,9 +310,9 @@ button:hover{
 
     font-family:'Great Vibes',cursive;
 
-    font-size:60px;
+    font-size:65px;
 
-    margin-bottom:20px;
+    margin-bottom:25px;
 
 }
 
@@ -225,9 +332,9 @@ button:hover{
 
 .final{
 
-    margin-top:25px;
+    margin-top:30px;
 
-    font-size:25px;
+    font-size:28px;
 
     animation:brillo 2s infinite;
 
@@ -235,7 +342,10 @@ button:hover{
 
 
 
-/* CORAZONES */
+/* =====================
+   CORAZONES Y PETALOS
+===================== */
+
 
 .corazon{
 
@@ -243,15 +353,12 @@ button:hover{
 
     bottom:-50px;
 
-    font-size:25px;
+    animation:
 
-    animation:subir 8s linear forwards;
+    subir 8s linear forwards;
 
 }
 
-
-
-/* PETALOS */
 
 .petalo{
 
@@ -259,9 +366,9 @@ button:hover{
 
     top:-50px;
 
-    font-size:25px;
+    animation:
 
-    animation:caer 8s linear forwards;
+    caer 8s linear forwards;
 
 }
 
@@ -269,6 +376,7 @@ button:hover{
 
 
 @keyframes subir{
+
 
     from{
 
@@ -297,11 +405,14 @@ button:hover{
 
 @keyframes caer{
 
+
     to{
 
         transform:
+
         translateY(120vh)
         rotate(360deg);
+
 
         opacity:0;
 
@@ -312,19 +423,29 @@ button:hover{
 
 
 
+/* =====================
+   ANIMACIONES
+===================== */
+
+
 @keyframes entrada{
 
     from{
 
         opacity:0;
-        transform:translateY(40px);
+
+        transform:
+        translateY(40px);
 
     }
+
 
     to{
 
         opacity:1;
-        transform:translateY(0);
+
+        transform:
+        translateY(0);
 
     }
 
@@ -333,6 +454,7 @@ button:hover{
 
 
 @keyframes latido{
+
 
     50%{
 
@@ -346,10 +468,14 @@ button:hover{
 
 @keyframes aparecerCarta{
 
+
     from{
 
         opacity:0;
-        transform:scale(.5);
+
+        transform:
+        scale(.5)
+        translateY(50px);
 
     }
 
@@ -357,7 +483,10 @@ button:hover{
     to{
 
         opacity:1;
-        transform:scale(1);
+
+        transform:
+        scale(1)
+        translateY(0);
 
     }
 
@@ -367,9 +496,12 @@ button:hover{
 
 @keyframes brillo{
 
+
     50%{
 
-        text-shadow:0 0 25px white;
+        text-shadow:
+
+        0 0 25px white;
 
     }
 
@@ -377,45 +509,143 @@ button:hover{
 
 
 
-/* CELULAR */
+/* =====================
+   TABLET
+===================== */
 
-@media(max-width:600px){
 
-    h1{
+@media(max-width:768px){
 
-        font-size:55px;
+
+    body{
+
+        align-items:flex-start;
+
+    }
+
+
+    .contenedor{
+
+        padding-top:70px;
 
     }
 
 
     .luna{
 
-        width:80px;
-        height:80px;
-        right:40px;
-        top:40px;
+        width:85px;
+
+        height:85px;
+
+        top:35px;
+
+        right:35px;
 
     }
 
 
     .texto{
 
-        font-size:16px;
+        font-size:17px;
 
     }
 
 
     .carta{
 
-        padding:25px;
+        padding:30px 20px;
 
     }
 
 
     .carta h2{
 
-        font-size:45px;
+        font-size:50px;
+
+    }
+
+
+    .carta p{
+
+        font-size:16px;
 
     }
 
 }
+
+
+
+/* =====================
+   CELULARES PEQUEÑOS
+===================== */
+
+
+@media(max-width:400px){
+
+
+    body{
+
+        padding:10px;
+
+    }
+
+
+    .contenedor{
+
+        padding-top:60px;
+
+    }
+
+
+    h1{
+
+        font-size:45px;
+
+    }
+
+
+    .subtitulo{
+
+        font-size:11px;
+
+    }
+
+
+    .texto{
+
+        font-size:15px;
+
+    }
+
+
+    button{
+
+        font-size:15px;
+
+        padding:14px 25px;
+
+    }
+
+
+    .carta{
+
+        padding:20px 15px;
+
+    }
+
+
+    .carta h2{
+
+        font-size:42px;
+
+    }
+
+
+    .carta p{
+
+        font-size:14px;
+
+    }
+
+
+    }
