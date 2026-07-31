@@ -1,84 +1,263 @@
-// Crear corazones flotantes
-function crearCorazon() {
-    const corazon = document.createElement("div");
-    corazon.classList.add("corazon");
+// CREAR ESTRELLAS ✨
 
-    corazon.innerHTML = ["❤️","💖","💕","💗","💘"][Math.floor(Math.random()*5)];
+const estrellas = document.getElementById("estrellas");
 
-    corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.fontSize = (20 + Math.random() * 30) + "px";
-    corazon.style.animationDuration = (6 + Math.random() * 6) + "s";
+for(let i = 0; i < 120; i++){
 
-    document.body.appendChild(corazon);
+    let estrella = document.createElement("span");
 
-    setTimeout(() => {
-        corazon.remove();
-    }, 12000);
+    estrella.className = "estrella";
+
+    estrella.style.left = Math.random()*100 + "%";
+    estrella.style.top = Math.random()*100 + "%";
+
+    estrella.style.animationDelay =
+    Math.random()*3 + "s";
+
+    estrella.style.opacity =
+    Math.random();
+
+    estrellas.appendChild(estrella);
+
 }
 
-// Crear un corazón cada 300 ms
-setInterval(crearCorazon, 300);
 
-// Abrir la carta
-const boton = document.getElementById("btn");
-const carta = document.getElementById("carta");
 
-boton.addEventListener("click", () => {
+// CREAR CORAZONES ❤️
 
-    carta.classList.remove("oculto");
+const corazones = document.getElementById("corazones");
 
-    carta.animate([
+function crearCorazon(){
+
+    let corazon = document.createElement("div");
+
+    corazon.className="corazon";
+
+    let lista=[
+        "❤️",
+        "💖",
+        "💕",
+        "💗",
+        "💘"
+    ];
+
+    corazon.innerHTML =
+    lista[Math.floor(Math.random()*lista.length)];
+
+
+    corazon.style.left =
+    Math.random()*100+"%";
+
+
+    corazon.style.fontSize =
+    (20 + Math.random()*30)+"px";
+
+
+    corazon.style.animationDuration =
+    (5 + Math.random()*6)+"s";
+
+
+    corazones.appendChild(corazon);
+
+
+
+    setTimeout(()=>{
+
+        corazon.remove();
+
+    },10000);
+
+}
+
+
+setInterval(crearCorazon,350);
+
+
+
+
+// CREAR PÉTALOS 🌹
+
+const petalos = document.getElementById("petalos");
+
+
+function crearPetalo(){
+
+    let petalo=document.createElement("div");
+
+    petalo.className="petalo";
+
+    petalo.innerHTML="🌹";
+
+
+    petalo.style.left=
+    Math.random()*100+"%";
+
+
+    petalo.style.fontSize=
+    (15+Math.random()*25)+"px";
+
+
+    petalo.style.animationDuration=
+    (5+Math.random()*5)+"s";
+
+
+    petalos.appendChild(petalo);
+
+
+    setTimeout(()=>{
+
+        petalo.remove();
+
+    },10000);
+
+}
+
+
+setInterval(crearPetalo,800);
+
+
+
+
+// ABRIR CARTA 💌
+
+const boton=document.getElementById("abrir");
+
+const carta=document.getElementById("carta");
+
+
+boton.addEventListener("click",()=>{
+
+
+    carta.style.display="block";
+
+
+    boton.style.display="none";
+
+
+    carta.animate(
+
+        [
+
+            {
+                transform:
+                "scale(.5) rotate(-10deg)",
+
+                opacity:0
+            },
+
+
+            {
+
+                transform:
+                "scale(1.1) rotate(3deg)",
+
+                opacity:1
+
+            },
+
+
+            {
+
+                transform:
+                "scale(1)",
+
+                opacity:1
+
+            }
+
+
+        ],
+
         {
-            opacity: 0,
-            transform: "scale(0.7) rotate(-5deg)"
-        },
-        {
-            opacity: 1,
-            transform: "scale(1.05) rotate(2deg)"
-        },
-        {
-            opacity: 1,
-            transform: "scale(1)"
+
+            duration:1500,
+
+            easing:"ease-out"
+
         }
-    ], {
-        duration: 1200,
-        easing: "ease-out"
-    });
 
-    boton.innerHTML = "❤️ Te Amo ❤️";
+    );
+
+
 });
 
-// Efecto al mover el mouse
-document.addEventListener("mousemove", (e) => {
 
-    const brillo = document.createElement("div");
 
-    brillo.style.position = "absolute";
-    brillo.style.left = e.pageX + "px";
-    brillo.style.top = e.pageY + "px";
-    brillo.style.width = "8px";
-    brillo.style.height = "8px";
-    brillo.style.borderRadius = "50%";
-    brillo.style.background = "white";
-    brillo.style.boxShadow = "0 0 20px white";
-    brillo.style.pointerEvents = "none";
+
+// BRILLOS AL TOCAR LA PANTALLA ✨
+
+
+document.addEventListener("click",(e)=>{
+
+
+    let brillo=document.createElement("div");
+
+
+    brillo.style.position="absolute";
+
+    brillo.style.left=e.pageX+"px";
+
+    brillo.style.top=e.pageY+"px";
+
+
+    brillo.style.width="15px";
+
+    brillo.style.height="15px";
+
+
+    brillo.style.background="white";
+
+    brillo.style.borderRadius="50%";
+
+    brillo.style.boxShadow=
+    "0 0 25px white";
+
+
+    brillo.style.pointerEvents="none";
+
 
     document.body.appendChild(brillo);
 
-    brillo.animate([
-        {
-            opacity: 1,
-            transform: "scale(1)"
-        },
-        {
-            opacity: 0,
-            transform: "scale(4)"
-        }
-    ], {
-        duration: 800
-    });
 
-    setTimeout(() => {
+
+    brillo.animate(
+
+        [
+
+            {
+                transform:"scale(1)",
+
+                opacity:1
+
+            },
+
+
+            {
+
+                transform:"scale(5)",
+
+                opacity:0
+
+            }
+
+        ],
+
+
+        {
+
+            duration:800
+
+        }
+
+
+    );
+
+
+    setTimeout(()=>{
+
         brillo.remove();
-    }, 800);
+
+    },800);
+
+
 });
